@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { ArrowRight, Sparkles } from "lucide-react"
+import FloatingLines from "@/components/ui/floating-lines"
 
 export default function LandingPage() {
 
@@ -23,6 +24,7 @@ export default function LandingPage() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      <FloatingLines />
       
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/20 blur-[120px] rounded-full pointer-events-none" />

@@ -108,7 +108,8 @@ def get_channel_messages(channel_id: int, db: Session = Depends(get_db)):
 
     # Messages are stored as group_id = community_id
     messages = db.query(Message).filter(
-        Message.group_id == channel.community_id
+        Message.group_id == channel.community_id,
+        Message.is_deleted == False
     ).order_by(Message.id.asc()).all()
 
     formatted = []
@@ -134,11 +135,8 @@ def delete_message(message_id: int, user_id: int, db: Session = Depends(get_db))
     if not msg:
         raise HTTPException(status_code=404, detail="Message not found")
 
-    # Only owner can delete
-    if msg.user_id != user_id:
-        raise HTTPException(status_code=403, detail="You can only delete your own messages")
-
-    db.delete(msg)
+    # Soft delete
+    msg.is_deleted = True
     db.commit()
     return {"status": "deleted", "message_id": message_id}
 

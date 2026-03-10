@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Shield, Activity, MessageSquareWarning, Mic, Send, Box, ShieldCheck, ShieldAlert, Cpu } from "lucide-react"
 import clsx from "clsx"
+import FloatingLines from "@/components/ui/floating-lines"
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000"
 
@@ -134,6 +135,7 @@ export default function AdminDashboard() {
   if (!isAuthenticated) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-[radial-gradient(circle_at_center,#15182A_0%,#060010_100%)]">
+        <FloatingLines />
         <AnimatePresence>
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
@@ -184,6 +186,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="flex h-screen bg-[#060010] text-[#E2E8F0] overflow-hidden font-sans font-inter relative z-20">
+      <FloatingLines />
       
       {/* SIDEBAR */}
       <div className="w-[260px] bg-[#050508] border-r border-white/10 flex flex-col p-[30px_20px] z-[100] relative">

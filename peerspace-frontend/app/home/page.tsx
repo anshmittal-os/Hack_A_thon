@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { ShieldCheck, Activity, Users, Hash, ChevronRight, Plus, Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import clsx from "clsx"
+import FloatingLines from "@/components/ui/floating-lines"
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000"
 
@@ -53,6 +54,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-full p-8 md:p-10 relative overflow-x-hidden">
+      <FloatingLines />
 
       {/* Background ambience */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/8 blur-[120px] rounded-full pointer-events-none -z-10" />
